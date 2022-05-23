@@ -8,11 +8,11 @@ import { HomeComponent } from './modules/home/home.component';
 import {HomeModule} from './modules/home/home.module';
 import {LoginModule} from './modules/login/login.module';
 import {RouterModule} from '@angular/router';
-import { AgGridModule } from 'ag-grid-angular';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [AppComponent, ],
-  imports: [BrowserModule, AppRoutingModule, HomeModule, LoginModule, RouterModule],
+  imports: [BrowserModule, AppRoutingModule, HomeModule, LoginModule, RouterModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

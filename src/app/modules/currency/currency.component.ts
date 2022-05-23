@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {CellClickedEvent, ColDef, GridReadyEvent} from "ag-grid-community";
-import {AgGridAngular} from "ag-grid-angular";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {RatesService} from "../../service/rates.service";
+import {CurrencyModel} from "../shared/currency.model";
 
 @Component({
   selector: 'app-currency',
@@ -11,27 +11,20 @@ import {HttpClient} from "@angular/common/http";
 })
 export class CurrencyComponent implements OnInit {
 
-  columnDefs: ColDef[] = [
-    { field: 'make' },
-    { field: 'model' },
-    { field: 'price' }
-  ];
-
-  rowData = [
-    { make: 'Toyota', model: 'Celica', price: 35000 },
-    { make: 'Ford', model: 'Mondeo', price: 32000 },
-    { make: 'Porsche', model: 'Boxster', price: 72000 }
-  ];
-
-  public rowData$!: Observable<any[]>;
-
-  // For accessing the Grid's API
-  @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _ratesService: RatesService) { }
 
   ngOnInit(): void {
+    this._ratesService.getRates().subscribe(
+      (item: CurrencyModel[]) => {
+        console.log(item);
+      }
+    )
   }
+
+  getRates(): void {
+
+  }
+
   //
   // onGridReady(params: GridReadyEvent): void{
   //   this.rowData$ = this.http

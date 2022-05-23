@@ -5,9 +5,10 @@ import {ReportRoutingModule} from "./report-routing.module";
 
 
 @NgModule({
-  declarations: [ReportComponent, ReportRoutingModule],
+  declarations: [ReportComponent, ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReportRoutingModule
   ]
 })
 export class ReportModule { }
